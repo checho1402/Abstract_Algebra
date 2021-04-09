@@ -13,24 +13,28 @@ public:
 
   string cifrado(string mensaje){
     string auxiliaroficial;
-
+    //Creo strings auxiliares para almacenar la infomacion de las puntas y el centro
     string auxiliar1,auxiliar2,auxiliar3;
     int resto = ele_olas - size(mensaje)%ele_olas;
+    //Relleno espacios con '_'
     string mensaje1 = mensaje + string(resto,'_');
+    //Para que el numero de olas sea exacto a pesar de ser decimal hago esta operación.
     olas = (double(size(mensaje))+double(ele_olas)-1)/double(ele_olas);
     int cresta = olas,base = olas, rail_central = size(mensaje1)-(cresta + base);
-
-    cout << "rail_central:" <<rail_central  << " \n";
+    //Las lineas comentadas forman parte de un intento para hacer el rail fence de mas de 3 railes, hago esas operaciones para los railes centrales 
+    //cout << "rail_central:" <<rail_central  << " \n";
 
     int numrail = railes - 2;
     int elementos = rail_central/numrail;
-    cout << "elementos:" <<elementos  << " \n";
+    //cout << "elementos:" <<elementos  << " \n";
     string centro[rail_central];
     for(int k=0; k<numrail ; k++)
     {
       centro[k].append(elementos,'_');
     }
-    cout << "elementos:" <<centro[0]  << " \n";
+    //cout << "elementos:" <<centro[0]  << " \n";
+
+    //El cifrado es concatenar el texto cifrado de la cresta, el centro y la base.
     for(int i=0; i<size(mensaje1) ; i+=(olas)-1)
     {
       auxiliar1 += mensaje1[i];
@@ -47,9 +51,7 @@ public:
     }
     this->auxiliar11 = auxiliar1;
     auxiliaroficial = auxiliar1+auxiliar2+auxiliar3;
-    cout << "auxiliar1: " << auxiliar1  << " \n";
-    cout << "auxiliar2: " <<auxiliar2  << " \n";
-      cout << "auxiliar3: " <<auxiliar3  << " \n";
+
     /*
     for(int i=0; i<numrail ; i++)
     {
@@ -66,13 +68,13 @@ public:
 
   string decifrado(string mensaje1){
         string auxiliar4,auxiliar5,auxiliar6;
- 
+  //Creo denuevo los auxiliares y sus contenidos
     string auxiliarsito;
 
         auxiliar4.append(mensaje1,0,5);
         auxiliar5.append(mensaje1,5,15);
         auxiliar6.append(mensaje1,15,20);
-
+    //Leo los auxiliares uno por uno, en froma de ola
       for(int i=0;i<size(mensaje1); i++)
       {         
         int j = i;    
@@ -94,9 +96,10 @@ int main() {
     string mensaje = "Cifrado rail fence";
 
   string mensajecifrado = Emisor.cifrado(mensaje);
+  cout << "Mensaje cifrado :  \n";
   cout << mensajecifrado<<"/ \n";
   string mensajeoriginal = Receptor.decifrado(mensajecifrado);
-
+  cout << "Mensaje descifrado :  \n";
   cout << mensajeoriginal<<"/ \n";
-      std::cout << "\n\n \n";  
+
 }

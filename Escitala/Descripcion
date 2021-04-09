@@ -1,0 +1,6 @@
+miss mi codigo esta desarrollado basado en el ejemplo que usted explico la anterior clase, 
+el programa cifra y decifra el mensaje hola como estan, y cualquier mensaje que cumpla con 18 caracteres.
+
+Si se ingresa un mensaje al cual le falten espacios para llegar a esos 18 caracteres el programa lo 
+cifrara pero a la hora de decifrarlo no lo hara correctamente, aparte de ese inconveniente el programa 
+cifra y decifra bajo las condiciones que le dije anteriormente
